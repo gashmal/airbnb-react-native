@@ -13,6 +13,7 @@ import {
 	Platform
 } from "react-native";
 import axios from "axios";
+import { BoxShadow } from "react-native-shadow";
 
 export default class User extends Component {
 	state = {
@@ -40,18 +41,34 @@ export default class User extends Component {
 
 	render() {
 		console.log("yes my men");
+
+		const shadowOpt = {
+			width: 90,
+			height: 90,
+			color: "#FFF",
+			border: 2,
+			radius: 45,
+			opacity: 0.2,
+			x: 0,
+			y: 0,
+			style: { marginVertical: 2 }
+		};
+
 		return (
 			<ScrollView>
 				<View style={styles.body}>
 					<StatusBar backgroundColor="#FF5A5F" barStyle="light-content" />
 					<View>
-						<Image
-							source={{
-								uri: this.state.account.photos[0]
-							}}
-							style={styles.img}
-						/>
+						<BoxShadow setting={shadowOpt}>
+							<Image
+								source={{
+									uri: this.state.account.photos[0]
+								}}
+								style={styles.img}
+							/>
+						</BoxShadow>
 					</View>
+
 					<View style={styles.card}>
 						<View
 							style={{
@@ -78,6 +95,7 @@ export default class User extends Component {
 							</Text>
 						</View>
 					</View>
+
 					<TouchableOpacity
 						onPress={() => {
 							this.getUser();

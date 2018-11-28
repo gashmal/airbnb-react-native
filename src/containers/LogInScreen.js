@@ -11,6 +11,7 @@ import {
 	KeyboardAvoidingView
 } from "react-native";
 import axios from "axios";
+import { BoxShadow } from "react-native-shadow";
 
 export default class LogInScreen extends Component {
 	state = {
@@ -39,6 +40,7 @@ export default class LogInScreen extends Component {
 
 	render() {
 		console.log("yes my men");
+
 		return (
 			<View style={styles.body}>
 				<StatusBar backgroundColor="#FF5A5F" barStyle="light-content" />
