@@ -10,7 +10,8 @@ import {
 	Image,
 	ScrollView,
 	KeyboardAvoidingView,
-	Platform
+	Platform,
+	FlatList
 } from "react-native";
 import axios from "axios";
 import { BoxShadow } from "react-native-shadow";
@@ -20,7 +21,7 @@ export default class User extends Component {
 		_id: "",
 		account: {
 			photos: [],
-			favorites: [],
+			favorites: [{ photos: [] }],
 			rooms: [],
 			username: "",
 			description: ""
@@ -29,11 +30,15 @@ export default class User extends Component {
 
 	getUser() {
 		axios
-			.get("https://airbnb-api.now.sh/api/user/58ff73cc1765a998979a338e", {
-				headers: {
-					Authorization: "Bearer " + "8piJbT3gYzYKgzuo"
+			.get(
+				"https://airbnb-api.now.sh/api/user/" +
+					this.props.navigation.getParam("_id"),
+				{
+					headers: {
+						Authorization: "Bearer " + this.props.navigation.getParam("token")
+					}
 				}
-			})
+			)
 			.then(response => {
 				this.setState(response.data);
 			});
@@ -41,7 +46,7 @@ export default class User extends Component {
 
 	render() {
 		console.log("yes my men");
-
+		alert(JSON.stringify(this.state));
 		const shadowOpt = {
 			width: 90,
 			height: 90,
@@ -55,7 +60,7 @@ export default class User extends Component {
 		};
 
 		return (
-			<ScrollView>
+			<ScrollView style={{ flex: 1 }}>
 				<View style={styles.body}>
 					<StatusBar backgroundColor="#FF5A5F" barStyle="light-content" />
 					<View>
@@ -94,6 +99,23 @@ export default class User extends Component {
 								{this.state.account.description}
 							</Text>
 						</View>
+					</View>
+					<View style={{ flexDirection: "row" }}>
+						<FlatList
+							data={this.state.account.favorites[0].photos}
+							renderItem={({ item }) => (
+								<Image
+									style={{ height: 100, width: 100 }}
+									source={{
+										uri: item
+									}}
+								/>
+							)}
+							keyExtractor={index => {
+								return index;
+							}}
+							horizontal
+						/>
 					</View>
 
 					<TouchableOpacity

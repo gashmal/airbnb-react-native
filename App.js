@@ -4,15 +4,14 @@ import SignUpScreen from "./src/containers/SignUpScreen";
 import UserScreen from "./src/containers/UserScreen";
 
 const App = createStackNavigator({
-	User: {
-		screen: UserScreen,
+	SignUp: {
+		screen: SignUpScreen,
 		navigationOptions: {
 			header: null
 		}
 	},
-
-	SignUp: {
-		screen: SignUpScreen,
+	User: {
+		screen: UserScreen,
 		navigationOptions: {
 			header: null
 		}

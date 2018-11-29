@@ -11,7 +11,6 @@ import {
 	KeyboardAvoidingView
 } from "react-native";
 import axios from "axios";
-import { BoxShadow } from "react-native-shadow";
 
 export default class LogInScreen extends Component {
 	state = {
@@ -33,9 +32,7 @@ export default class LogInScreen extends Component {
 					}
 				}
 			)
-			.then(response => {
-				alert(JSON.stringify(response.data));
-			});
+			.then(response => this.props.navigation.navigate("User", response.data));
 	}
 
 	render() {

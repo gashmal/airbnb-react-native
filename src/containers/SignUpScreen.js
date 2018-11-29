@@ -9,9 +9,12 @@ import {
 	TextInput,
 	Image,
 	ScrollView,
-	KeyboardAvoidingView
+	KeyboardAvoidingView,
+	Dimensions
 } from "react-native";
 import axios from "axios";
+
+const width = Dimensions.get("window").width;
 
 export default class SignUp extends Component {
 	state = {
@@ -22,14 +25,7 @@ export default class SignUp extends Component {
 		description: ""
 	};
 
-	// Pour ceux qui veulent faire le signup en bonus
-
-	// https://airbnb-api.now.sh/api/user/sign_up
-	// POST
-	// email, password, username, name, description
-
 	register() {
-		// alert(JSON.stringify(this.state));
 		axios
 			.post(
 				"https://airbnb-api.now.sh/api/user/sign_up",
@@ -52,7 +48,6 @@ export default class SignUp extends Component {
 	}
 
 	render() {
-		console.log("yes my men");
 		return (
 			<ScrollView>
 				<View style={styles.body}>
@@ -151,7 +146,7 @@ const styles = StyleSheet.create({
 		height: 40,
 		borderBottomColor: "white",
 		borderBottomWidth: 1,
-		width: 280
+		width: width * 0.75
 	},
 	touch: {
 		marginTop: 30,
