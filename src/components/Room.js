@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Image, Dimensions } from "react-native";
+import {
+	Text,
+	View,
+	StyleSheet,
+	Image,
+	Dimensions,
+	FlatList,
+	ScrollView
+} from "react-native";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -63,10 +71,10 @@ export default class Room extends Component {
 					backgroundColor: "black",
 					zIndex: 1,
 					position: "relative",
-					elevation: 5
+					elevation: 7
 				}}
 			>
-				<Image
+				{/* <Image
 					style={{
 						flex: 1,
 						zIndex: 2,
@@ -79,7 +87,43 @@ export default class Room extends Component {
 						uri: photos[1]
 					}}
 					resizeMode="cover"
-				/>
+                /> */}
+				<View
+					style={{
+						borderRadius: 20,
+						height: height * 0.3,
+						width: width - 60,
+						overflow: "hidden"
+						// borderColor: "white",
+						// borderWidth: 1
+					}}
+				>
+					<ScrollView>
+						<FlatList
+							data={photos}
+							renderItem={({ item }) => (
+								<Image
+									style={{
+										height: height * 0.3,
+										width: width - 60,
+
+										zIndex: 2,
+										opacity: 0.8
+									}}
+									resizeMode="cover"
+									source={{
+										uri: item
+									}}
+								/>
+							)}
+							keyExtractor={index => {
+								return index;
+							}}
+							horizontal
+						/>
+					</ScrollView>
+				</View>
+
 				<Text
 					style={{
 						color: "white",
