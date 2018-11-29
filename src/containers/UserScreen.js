@@ -46,7 +46,6 @@ export default class User extends Component {
 
 	render() {
 		console.log("yes my men");
-		alert(JSON.stringify(this.state));
 		const shadowOpt = {
 			width: 90,
 			height: 90,
@@ -60,7 +59,7 @@ export default class User extends Component {
 		};
 
 		return (
-			<ScrollView style={{ flex: 1 }}>
+			<ScrollView>
 				<View style={styles.body}>
 					<StatusBar backgroundColor="#FF5A5F" barStyle="light-content" />
 					<View>
@@ -105,7 +104,7 @@ export default class User extends Component {
 							data={this.state.account.favorites[0].photos}
 							renderItem={({ item }) => (
 								<Image
-									style={{ height: 100, width: 100 }}
+									style={{ height: 200, width: 200 }}
 									source={{
 										uri: item
 									}}

@@ -8,14 +8,17 @@ import {
 	TextInput,
 	Image,
 	ScrollView,
-	KeyboardAvoidingView
+	KeyboardAvoidingView,
+	Dimensions
 } from "react-native";
 import axios from "axios";
 
+const width = Dimensions.get("window").width;
+
 export default class LogInScreen extends Component {
 	state = {
-		text: "",
-		password: ""
+		text: "arno@airbnb-api.com",
+		password: "password01"
 	};
 
 	register() {
@@ -96,20 +99,25 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		paddingTop: 60
 	},
-	text: { color: "white", textAlign: "center", fontSize: 35, paddingTop: 40 },
+	text: {
+		color: "white",
+		textAlign: "center",
+		fontSize: 35,
+		marginTop: 20,
+		marginBottom: 40
+	},
 	input: {
-		marginTop: 30,
+		marginBottom: 30,
 		color: "white",
 		height: 40,
 		borderBottomColor: "white",
 		borderBottomWidth: 1,
-		width: 280
+		width: width * 0.75
 	},
 	touch: {
-		marginTop: 30,
 		backgroundColor: "white",
 		borderRadius: 25,
-		marginBottom: 20
+		marginBottom: 30
 	},
 	touchText: {
 		color: "#FF5A5F",

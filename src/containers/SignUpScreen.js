@@ -48,8 +48,9 @@ export default class SignUp extends Component {
 	}
 
 	render() {
+		console.log("yoyoy");
 		return (
-			<ScrollView>
+			<ScrollView style={styles.scroll}>
 				<KeyboardAvoidingView style={styles.body} behavior="padding" enabled>
 					<StatusBar backgroundColor="#FF5A5F" barStyle="light-content" />
 					<View>
@@ -129,7 +130,7 @@ export default class SignUp extends Component {
 
 const styles = StyleSheet.create({
 	scroll: {
-		flex: 1
+		// flex: 1
 	},
 
 	body: {
@@ -139,9 +140,15 @@ const styles = StyleSheet.create({
 		paddingTop: 60,
 		paddingBottom: 30
 	},
-	text: { color: "white", textAlign: "center", fontSize: 35, paddingTop: 40 },
+	text: {
+		color: "white",
+		textAlign: "center",
+		fontSize: 35,
+		marginTop: 20,
+		marginBottom: 40
+	},
 	input: {
-		marginTop: 30,
+		marginBottom: 30,
 		color: "white",
 		height: 40,
 		borderBottomColor: "white",
@@ -149,9 +156,9 @@ const styles = StyleSheet.create({
 		width: width * 0.75
 	},
 	touch: {
-		marginTop: 30,
 		backgroundColor: "white",
-		borderRadius: 25
+		borderRadius: 25,
+		marginBottom: 30
 	},
 	touchText: {
 		color: "#FF5A5F",
