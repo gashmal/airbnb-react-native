@@ -39,7 +39,7 @@ export default class LogInScreen extends Component {
 		console.log("yes my men");
 
 		return (
-			<View style={styles.body}>
+			<KeyboardAvoidingView style={styles.body} behavior="padding" enabled>
 				<StatusBar backgroundColor="#FF5A5F" barStyle="light-content" />
 				<View>
 					<Image
@@ -50,7 +50,7 @@ export default class LogInScreen extends Component {
 						style={{ width: 80, height: 80 }}
 					/>
 				</View>
-				<Text style={styles.text}>Welcome</Text>
+				<Text style={styles.text}>Welcome !</Text>
 				<View>
 					<TextInput
 						style={styles.input}
@@ -79,7 +79,7 @@ export default class LogInScreen extends Component {
 						<Text style={styles.touchText}>Login</Text>
 					</View>
 				</TouchableOpacity>
-			</View>
+			</KeyboardAvoidingView>
 		);
 	}
 }
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "#FF5A5F",
 		flex: 1,
 		alignItems: "center",
+		justifyContent: "center",
 		paddingTop: 60
 	},
 	text: { color: "white", textAlign: "center", fontSize: 35, paddingTop: 40 },

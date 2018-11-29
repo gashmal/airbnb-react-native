@@ -50,7 +50,7 @@ export default class SignUp extends Component {
 	render() {
 		return (
 			<ScrollView>
-				<View style={styles.body}>
+				<KeyboardAvoidingView style={styles.body} behavior="padding" enabled>
 					<StatusBar backgroundColor="#FF5A5F" barStyle="light-content" />
 					<View>
 						<Image
@@ -121,7 +121,7 @@ export default class SignUp extends Component {
 							<Text style={styles.touchText}>Log In</Text>
 						</View>
 					</TouchableOpacity>
-				</View>
+				</KeyboardAvoidingView>
 			</ScrollView>
 		);
 	}
