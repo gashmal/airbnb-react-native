@@ -8,6 +8,7 @@ import {
 	StatusBar
 } from "react-native";
 import axios from "axios";
+import MapView from "react-native-maps";
 import Room from "../components/Room";
 
 const width = Dimensions.get("window").width;
@@ -23,29 +24,51 @@ export default class Rooms extends Component {
 			slug: "",
 			loc: []
 		},
-		count: ""
+		count: "",
+		latitude: 45.7763097,
+		longitude: 3.0875677
 	};
 
 	getRooms() {
 		axios
 			.get("https://airbnb-api.now.sh/api/room?city=paris")
 			.then(response => {
-				this.setState(response.data);
+				this.setState(
+					response.data
+					// 	 () => {
+					// 	const latitude = this.state.city.loc[1];
+					// 	const longitude = this.state.city.loc[0];
+
+					// 	this.setState({
+					// 		latitude,
+					// 		longitude
+					// 	});
+					// }
+				);
 			});
 	}
 
 	render() {
+		const { latitude, longitude } = this.state;
 		return (
 			<View style={{ flex: 1, backgroundColor: "white", position: "relative" }}>
 				<StatusBar backgroundColor="#FF5A5F" barStyle="light-content" />
-				<Image
-					resizeMode="cover"
-					source={require("../../assets/parismap.jpg")}
+				<MapView
 					style={{
+						flex: 1,
+						zIndex: -1,
 						height,
 						width,
-						zIndex: -1,
 						position: "absolute"
+					}}
+					liteMode
+					loadingEnabled
+					loadingIndicatorColor="#FF5A5F"
+					Region={{
+						latitude,
+						longitude,
+						latitudeDelta: 0.0922,
+						longitudeDelta: 0.0421
 					}}
 				/>
 				<View
